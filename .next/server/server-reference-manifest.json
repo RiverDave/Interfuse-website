@@ -1,0 +1,14 @@
+{
+  "node": {
+    "03cb2584224d4495fa6a0899cf55b15125d46b0c": {
+      "workers": {
+        "app/editor/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fdavidfeliperiveraguerra%2Fdev%2Ffuse-site%2Fapp%2Feditor%2Fpage.tsx%22%2C%5B%22%24%24ACTION_0%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/editor/page": "rsc"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "WjbUC2ovnxp/Tghhcy7wgCOrVsInCVU6qPd644n0auE="
+}
