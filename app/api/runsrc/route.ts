@@ -1,4 +1,3 @@
-import { assert } from "console"
 import { NextResponse, NextRequest } from "next/server"
 
 interface params {

@@ -1,41 +1,34 @@
 'use client'
 
 import { useState } from "react";
-import RunBtn from "../components/RunBtn";
-import OutputBox from "../components/OutputBox";
-import InputArea from "../components/InputBox";
+import RunBtn from "../components/editor/RunBtn";
+import OutputBox from "../components/editor/OutputBox";
+import InputArea from "../components/editor/InputBox";
 
 export default function Editor() {
 
 
 
-  const dummyCode = 'print("Hello, World!")'
-  const dummyOutput = 'Hello, World!'
+  const [inputValue, setInputValue] = useState<string>('')
+  const [outputValue, setOutputValue] = useState<string>('')
 
-  const [inputValue, setInputValue] = useState<string>(dummyCode)
-  const [outputValue, setOutputValue] = useState<string>(dummyOutput)
-
+  //Could assess the bad sharing state by enrolling these in a context provider 
   return (
-    <div className="flex justify-center">
+    <div className="flex-col justify-center">
 
-      <div className="flex-col justify-center align-middle">
-        <InputArea key={0} content={inputValue} setUserInput={setInputValue}/> {/* Bad Practice, dont pass setter! */}
-
-        <div className="flex justify-center">
-          <RunBtn key={1} content={inputValue} setOutputBox={setOutputValue} />
-        </div>
-
-        <div className="border border-black h-48">
-          <OutputBox key={2} content={outputValue} setOutputBox={undefined}/>
-
-        </div>
+      <div className="justify-center align-middle">
+        <InputArea key={0} content={inputValue} setUserInput={setInputValue} /> {/* Bad Practice, dont pass setter! */}
       </div>
 
+      <div className="flex justify-center">
+        <RunBtn key={1} content={inputValue} setOutputBox={setOutputValue} />
+      </div>
 
-
+      <div className="border border-black h-48">
+        <OutputBox key={2} content={outputValue} setOutputBox={undefined} />
+      </div>
 
     </div>
-
   );
 }
 
