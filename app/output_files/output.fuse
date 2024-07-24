@@ -1,6 +1,1 @@
-fn @hello_world() -> void {
-  @puts("Hello world")
-}
-
-@hello_world()
-
+@puts("Hello world")
