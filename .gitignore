@@ -1,5 +1,7 @@
 node_modules
 package-lock.json
+app/output_files/*
+*.env*
 .next/*
 .next/
 .next

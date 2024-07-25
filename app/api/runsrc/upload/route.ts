@@ -4,10 +4,6 @@ import { NextRequest, NextResponse } from "next/server"
 import path from "path";
 import { INTEFUSE_FILE_NAME, OUTPUT_DIR } from '../../../constants/constants'
 
-function create_args(src: string): string | Error {
-  return 'interfuse ' + src
-}
-
 //We'll run the compiler from here
 async function run_process(src: string): Promise<string | Error> {
 
@@ -34,6 +30,7 @@ export async function POST(req: NextRequest) {
 
   const formData = await req.formData()
   let src = formData.get('file') as string
+  src = src.concat('\n')
   const fileName = INTEFUSE_FILE_NAME
 
   if (!src) {
@@ -58,7 +55,7 @@ export async function POST(req: NextRequest) {
     //check that file exists
     if (fs.existsSync(filePath)) {
 
-      const command = 'interfuse ' + filePath
+      const command = process.env.FUSE_EXECUTABLE_DIR + ' ' + filePath
       const res = await run_process(command)
 
       if (res) {
