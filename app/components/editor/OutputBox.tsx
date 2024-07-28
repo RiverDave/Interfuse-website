@@ -1,13 +1,17 @@
-import { BtnProps } from "./RunBtn"
+import { useEditorContext } from "./EditorContext"
 
-export default function OutputBox({ content }: BtnProps) {
+export default function OutputBox() {
 
+
+  const { outputData } = useEditorContext()
 
   return (
 
-    <pre>
-      {content}
-    </pre>
+    <div className="border border-black h-96 overflow-hidden overflow-wrap break-words">
+      <pre className="text-sm">
+        {outputData}
+      </pre>
+    </div>
 
   )
 }
