@@ -1,6 +1,0 @@
-@puts("hello world!")
-
-fn @test(@a : int) -> void {
-  @printf(@a)
-}
-@test(45)

@@ -1,17 +1,11 @@
-import { useEditorContext } from "./EditorContext"
+import { useEditorContext } from "./EditorContext";
 
 export default function OutputBox() {
-
-
-  const { outputData } = useEditorContext()
+  const { outputData } = useEditorContext();
 
   return (
-
-    <div className="border border-black h-96 overflow-hidden overflow-wrap break-words">
-      <pre className="text-sm">
-        {outputData}
-      </pre>
+    <div className="p-2 border bg-background border-foreground text-foreground  h-96 overflow-auto overflow-wrap break-words">
+      <pre className=" text-wrap text-sm">{outputData}</pre>
     </div>
-
-  )
+  );
 }

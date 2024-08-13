@@ -1,29 +1,32 @@
-import { useState, useEffect, useContext } from "react"
-import CodeMirror from '@uiw/react-codemirror'
-import {  langs } from '@uiw/codemirror-extensions-langs';
+import { useState, useEffect, useContext, useCallback } from "react";
+import CodeMirror from "@uiw/react-codemirror";
+import { langs } from "@uiw/codemirror-extensions-langs";
 import { useEditorContext } from "./EditorContext";
-import { EDITOR_VALUE_PLACEHOLDER } from '@/app/constants/constants';
+import { EDITOR_VALUE_PLACEHOLDER } from "@/app/constants/constants";
+import { dracula } from "@uiw/codemirror-theme-dracula";
+import { eclipse } from "@uiw/codemirror-theme-eclipse";
+import { useTheme } from "next-themes";
 
 export default function InputArea() {
+  const { setTextData, textData } = useEditorContext();
+  const { theme } = useTheme();
 
-  const { setTextData, textData } = useEditorContext()
-  
   useEffect(() => {
     //Placeholder for the editor
-    setTextData(EDITOR_VALUE_PLACEHOLDER)
-  }, [])
-  
-  const handleChange = (value: string) => {
-    setTextData(value)
-  }
+  }, []);
 
+  const handleChange = useCallback((value: string) => {
+    setTextData(value);
+  }, []);
 
   return (
     <CodeMirror
       value={textData}
-      height="250px"
+      height="350px"
+      className="border border-foreground"
+      theme={theme === "dark" ? dracula : eclipse}
+      lang="rust"
       basicSetup={{
-        
         foldGutter: false,
         dropCursor: false,
         allowMultipleSelections: false,
@@ -31,13 +34,10 @@ export default function InputArea() {
         history: true,
         autocompletion: false,
         lintKeymap: true,
+        tabSize: 2,
       }}
       extensions={[langs.javascript().extension]}
-
       onChange={(value) => handleChange(value)}
     />
-  )
-
-
+  );
 }
-

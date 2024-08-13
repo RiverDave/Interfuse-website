@@ -1,46 +1,59 @@
+import { Button } from "@nextui-org/react";
 import { useEditorContext } from "./EditorContext";
-
-
-
+import { FaPlay } from "react-icons/fa";
 
 export default function RunBtn() {
-
-  const { textData, setOutputData } = useEditorContext()
-
+  const {
+    textData,
+    setOutputData,
+    loading,
+    setLoading,
+    setLLVMIRData: setLlvmIRData,
+  } = useEditorContext();
 
   const handleRun = async () => {
-
     try {
-
       if (!textData || !setOutputData) {
-        return
+        return;
       }
 
       //Text is being sent as formdata since sending plain text
       //strips \n characters from stream
       const formData = new FormData();
-      formData.append('file', textData);
+      formData.append("file", textData);
 
+      setLoading(true);
+      const response = await fetch("/api/runsrc/upload", {
+        method: "POST",
+        body: formData,
+      });
 
-      const response = await fetch('/api/runsrc/upload', {
-        method: 'POST',
-        body: formData
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        setOutputData(data.message)
+      if (!response.ok) {
+        throw new Error("Failed to run source code ");
       }
 
-    } catch (error) {
-      console.error(error)
+      const data = await response.json();
+      console.log(data);
+      setOutputData(data.message);
+
+      if (data.asm) {
+        setLlvmIRData(data.asm);
+      }
+    } catch (error: any) {
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
+  };
 
-  }
-  //TODO: Implement options alongside the run btn, these parameters could be stored in the context
   return (
-    <input type="submit" onClick={handleRun} value="Run" className="mt-4 mb-4 cursor-pointer justify-center align-middle bg-gray-100" />
-  )
-
+    <Button
+      isLoading={loading}
+      onClick={handleRun}
+      color="primary"
+      startContent={<FaPlay />}
+    >
+      Run
+    </Button>
+  );
 }
-

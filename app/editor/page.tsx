@@ -1,37 +1,27 @@
-'use client'
+"use client";
 
 import RunBtn from "../components/editor/RunBtn";
 import OutputBox from "../components/editor/OutputBox";
 import InputArea from "../components/editor/InputBox";
 import { EditorContextProvider } from "../components/editor/EditorContext";
+import SettingsBox from "../components/editor/SettingsBox";
 
 export default function Editor() {
-
   return (
     <EditorContextProvider>
-      <main className="flex justify-end">
-
+      <main className=" p-3 flex justify-end">
         {/* Introduction box */}
-        <div className="w-32 flex-auto flex-shrink border-black border ">
-          <h1> INSERT INTRODUCTION TO THE LANGUAGE</h1>
+        <div className="p-2 w-32 text-foreground flex-auto flex-shrink border-zinc-800 border ">
+          <h1> INSERT MARKDOWN HERE </h1>
         </div>
 
         {/* EDITOR BOX */}
-        <div className="w-32 flex-auto flex-shrink border-black border   ">
+        <div className="w-32 ml-10 flex-auto flex-shrink  ">
           <InputArea />
-
-          <div className="flex justify-center ">
-            <RunBtn />
-          </div>
-
+          <SettingsBox />
           <OutputBox />
         </div>
-
-
-
-
       </main>
     </EditorContextProvider>
   );
 }
-
