@@ -1,6 +1,7 @@
 import { Button } from "@nextui-org/react";
-import { useEditorContext } from "./EditorContext";
+import { useEditorContext } from "../EditorContext";
 import { FaPlay } from "react-icons/fa";
+import { OUTPUT_LLVM_IR_ERROR_PLACEHOLDER } from "@/app/constants/constants";
 
 export default function RunBtn() {
   const {
@@ -8,7 +9,8 @@ export default function RunBtn() {
     setOutputData,
     loading,
     setLoading,
-    setLLVMIRData: setLlvmIRData,
+    setLLVMIRData,
+    setSuccess,
   } = useEditorContext();
 
   const handleRun = async () => {
@@ -36,8 +38,13 @@ export default function RunBtn() {
       console.log(data);
       setOutputData(data.message);
 
-      if (data.asm) {
-        setLlvmIRData(data.asm);
+      console.log(data);
+
+      if (data.asm && data.isErrorCritical === false) {
+        setLLVMIRData(data.asm);
+        setSuccess(true);
+      } else {
+        setSuccess(false);
       }
     } catch (error: any) {
       console.error(error);
@@ -48,10 +55,12 @@ export default function RunBtn() {
 
   return (
     <Button
+      size="lg"
+      variant="shadow"
       isLoading={loading}
       onClick={handleRun}
-      color="primary"
       startContent={<FaPlay />}
+      className=""
     >
       Run
     </Button>

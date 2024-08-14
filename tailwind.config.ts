@@ -22,27 +22,29 @@ const config: Config = {
     },
   },
   darkMode: "class",
-  plugins: [nextui({
-    themes: {
-      light: {
-        colors: {
-          primary: {
-            DEFAULT: "#ccc",
-            foreground: "#ffffff",
-          }
-        }
-      },
-      dark: {
-        colors: {
-          background: "#0E1117",
-          foreground: "#ffffff",
-          primary: {
-            DEFAULT: "#17874A",
-            foreground: "#ffffff",
+  plugins: [
+    nextui({
+      themes: {
+        light: {
+          colors: {
+            primary: {
+              DEFAULT: "#FFFFFF",
+              foreground: "#000",
+            },
           },
-        }
-      }
-    }
-  })],
+        },
+        dark: {
+          colors: {
+            background: "#0E1117",
+            foreground: "#ffffff",
+            primary: {
+              DEFAULT: "#27272A",
+              foreground: "#ffffff",
+            },
+          },
+        },
+      },
+    }),
+  ],
 };
 export default config;

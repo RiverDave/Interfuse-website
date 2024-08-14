@@ -6,13 +6,23 @@ import {
   NavbarItem,
   Link,
   Button,
+  Spacer,
 } from "@nextui-org/react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import { Image } from "@nextui-org/image";
 
-export default function App() {
+export default function PageNavBar() {
   return (
     <Navbar>
       <NavbarBrand>
+        <Image
+          isBlurred
+          height={30}
+          width={30}
+          src="/images/InterfuseLogo.png"
+          alt="fuselogo"
+        />
+        <Spacer x={0.5} />
         <Link href="/" size="lg" className="font-bold text-foreground">
           Interfuse
         </Link>

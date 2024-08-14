@@ -5,6 +5,10 @@ import {
   OUTPUT_VALUE_PLACEHOLDER,
 } from "@/app/constants/constants";
 import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  OUTPUT_LLVM_IR_ERROR_PLACEHOLDER,
+  OUTPUT_LLVM_IR_INITIAL_PLACEHOLDER,
+} from "@/app/constants/constants";
 
 interface IEditorContext {
   textData: string;
@@ -15,6 +19,8 @@ interface IEditorContext {
   setOutputData: React.Dispatch<React.SetStateAction<string>>;
   llvmIRData: string;
   setLLVMIRData: React.Dispatch<React.SetStateAction<string>>;
+  setSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  success: boolean;
 }
 
 export const EditorContext = createContext<IEditorContext | null>(null);
@@ -39,7 +45,10 @@ export const EditorContextProvider = ({
   const [outputData, setOutputData] = useState<string>(
     OUTPUT_VALUE_PLACEHOLDER,
   );
-  const [llvmIRData, setLLVMIRData] = useState<string>("");
+  const [llvmIRData, setLLVMIRData] = useState<string>(
+    OUTPUT_LLVM_IR_INITIAL_PLACEHOLDER,
+  );
+  const [success, setSuccess] = useState<boolean>(true);
 
   return (
     <EditorContext.Provider
@@ -52,6 +61,8 @@ export const EditorContextProvider = ({
         setOutputData,
         llvmIRData,
         setLLVMIRData,
+        setSuccess,
+        success,
       }}
     >
       {children}
