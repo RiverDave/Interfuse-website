@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -10,8 +12,18 @@ import {
 } from "@nextui-org/react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { Image } from "@nextui-org/image";
+import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes";
 
 export default function PageNavBar() {
+  const isEditorPath = usePathname() === "/editor";
+
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setTheme("dark");
+  }, [setTheme]);
+
   return (
     <Navbar>
       <NavbarBrand>
@@ -39,9 +51,7 @@ export default function PageNavBar() {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarItem>
-        <ThemeSwitcher />
-      </NavbarItem>
+      <NavbarItem>{isEditorPath && <ThemeSwitcher />}</NavbarItem>
     </Navbar>
   );
 }

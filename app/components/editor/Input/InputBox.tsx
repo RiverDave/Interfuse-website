@@ -1,4 +1,5 @@
-import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Card, CardBody, CardHeader, Textarea } from "@nextui-org/react";
+import classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -30,11 +31,11 @@ export default function IntroCard() {
   }, []);
 
   return (
-    <div className="p-2 w-32 text-foreground h-full flex-auto flex-shrink max-h-screen text-wrap overflow-y-auto">
-      <Card isBlurred className="p-3 h-full ">
+    <div className="p-2 w-32 text-foreground h-full flex-auto flex-shrink max-h-screen overflow-y-auto">
+      <Card isBlurred className="p-3 h-full">
         <div className="border rounded-md border-foreground h-full">
           <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-            <p className="size-50">Introduction</p>
+            <h1 className="size-50">Introduction</h1>
           </CardHeader>
           <CardBody>
             {md && (

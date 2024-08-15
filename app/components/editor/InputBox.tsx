@@ -29,9 +29,6 @@ export default function InputArea() {
           className="border rounded-lg border-foreground"
           theme={theme === "dark" ? dracula : eclipse}
           lang="rust"
-          onLoad={(editor) => {
-            console.log("editor loaded");
-          }}
           basicSetup={{
             foldGutter: false,
             dropCursor: false,

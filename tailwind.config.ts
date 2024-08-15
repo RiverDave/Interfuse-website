@@ -14,10 +14,12 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'hero-pattern': 'url("/images/fuselogo1.png")',
       },
 
       colors: {
         gh: "#0E1117", //aka github dark
+        herocol: "9C022D",
       },
     },
   },
@@ -35,10 +37,10 @@ const config: Config = {
         },
         dark: {
           colors: {
-            background: "#0E1117",
+            background: "#000",
             foreground: "#ffffff",
             primary: {
-              DEFAULT: "#27272A",
+              DEFAULT: "#000",
               foreground: "#ffffff",
             },
           },
