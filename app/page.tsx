@@ -1,16 +1,18 @@
-import { Spacer } from "@nextui-org/react";
+import { Divider, Spacer } from "@nextui-org/react";
 import Hero from "./components/Hero/Hero";
 import FeatureSection from "./components/features/FeatureSection";
-import { Divider } from "@nextui-org/react";
+import PageFooter from "./components/Footer";
 
 // This component should contain the landing page
 export default function Home() {
   return (
     <main className="flex-col">
       <Hero />
-      <Spacer y={40} />
-      <Divider />
+
       <FeatureSection />
+      <Spacer y={20} />
+      <Divider className="my-10" />
+      <PageFooter />
     </main>
   );
 }

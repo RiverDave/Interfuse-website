@@ -3,8 +3,18 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import PageNavBar from "./components/Navbar/Navbar";
 import { Providers } from "./providers";
+import type { Viewport } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  // Also supported by less commonly used
+  // interactiveWidget: 'resizes-visual',
+};
 
 export const metadata: Metadata = {
   title: "Create Next App",

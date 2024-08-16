@@ -41,11 +41,6 @@ export default function PageNavBar() {
       </NavbarBrand>
       <NavbarContent justify="end">
         <NavbarItem className="text-foreground hidden lg:flex">
-          <Link className="text-foreground font-bold" href="/docs" size="lg">
-            Docs
-          </Link>
-        </NavbarItem>
-        <NavbarItem className="text-foreground hidden lg:flex">
           <Link className="text-foreground font-bold" href="/editor" size="lg">
             Editor
           </Link>
