@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
 import TitleArea from "./TitleArea";
-import { Spacer } from "@nextui-org/react";
+import { useEffect } from "react";
+import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 export default function Hero() {
   return (

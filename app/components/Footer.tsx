@@ -4,7 +4,7 @@ import { BiLogoGithub } from "react-icons/bi";
 
 export default function PageFooter() {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center py-4">
       <div className="flex flex-col justify-center items-center">
         <Link href="https://github.com/RiverDave/InterfuseLang">
           <BiLogoGithub

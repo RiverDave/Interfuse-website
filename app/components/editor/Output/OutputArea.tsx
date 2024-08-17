@@ -11,20 +11,19 @@ export default function OutputArea() {
   }, [outputData, llvmIRData, success]);
 
   return (
-    <div className="flex w-full flex-col">
-      <Tabs aria-label="Output">
+    <div className="flex-grow ">
+      <Tabs aria-label="Output" size="lg" className="flex-grow">
         <Tab key="photos" title="Output">
-          <Card>
-            <CardBody title="OUTPUTBOX">
+          <Card className="flex-grow">
+            <CardBody title="OUTPUTBOX" className="flex-grow">
               <OutputBox textData={outputData} success={success} />
             </CardBody>
           </Card>
         </Tab>
 
         <Tab key="IR" title="LLVM IR">
-          <Card>
-            <CardBody>
-              {/* Should be changed as Compilation finishes */}
+          <Card className="flex-grow">
+            <CardBody className="flex-grow">
               <OutputBox textData={llvmIRData} success={success} />
             </CardBody>
           </Card>

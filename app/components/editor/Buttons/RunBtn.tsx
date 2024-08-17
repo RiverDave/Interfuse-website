@@ -60,7 +60,7 @@ export default function RunBtn() {
       isLoading={loading}
       onClick={handleRun}
       startContent={<FaPlay />}
-      className=""
+      className="w-full"
     >
       Run
     </Button>

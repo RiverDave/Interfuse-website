@@ -12,7 +12,6 @@ export default function Home() {
       <FeatureSection />
       <Spacer y={20} />
       <Divider className="my-10" />
-      <PageFooter />
     </main>
   );
 }

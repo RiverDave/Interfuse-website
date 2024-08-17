@@ -16,13 +16,15 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 
 export default function PageNavBar() {
-  const isEditorPath = usePathname() === "/editor";
-
+  const isHomePath = usePathname() === "/";
   const { theme, setTheme } = useTheme();
 
   useEffect(() => {
-    setTheme("dark");
-  }, [setTheme]);
+    //set dark as default theme if user is on home page, really clunky solution imo
+    if (theme === "light" && isHomePath) {
+      setTheme("dark");
+    }
+  }, [theme, setTheme, isHomePath]);
 
   return (
     <Navbar>
@@ -45,8 +47,14 @@ export default function PageNavBar() {
             Editor
           </Link>
         </NavbarItem>
+
+        <NavbarItem className="text-foreground hidden lg:flex">
+          <Link className="text-foreground font-bold" href="/docs" size="lg">
+            Docs
+          </Link>
+        </NavbarItem>
       </NavbarContent>
-      <NavbarItem>{isEditorPath && <ThemeSwitcher />}</NavbarItem>
+      <NavbarItem>{!isHomePath && <ThemeSwitcher />}</NavbarItem>
     </Navbar>
   );
 }
