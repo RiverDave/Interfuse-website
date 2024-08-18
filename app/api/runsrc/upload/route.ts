@@ -2,7 +2,10 @@ import { exec } from "child_process";
 import fs, { readFileSync } from "fs";
 import { NextRequest, NextResponse } from "next/server";
 import path from "path";
-import { OUTPUT_LLVM_IR_ERROR_PLACEHOLDER } from "@/app/constants/constants";
+import {
+  FUSE_EXECUTABLE_DIR,
+  OUTPUT_LLVM_IR_ERROR_PLACEHOLDER,
+} from "@/app/constants/constants";
 import {
   INTEFUSE_TARGET_NAME,
   OUTPUT_DIR,
@@ -125,11 +128,7 @@ export async function POST(req: NextRequest) {
     });
 
     const command =
-      process.env.FUSE_EXECUTABLE_DIR +
-      " " +
-      filePath +
-      " " +
-      FUSE_EXECUTABLE_ARGS;
+      FUSE_EXECUTABLE_DIR + " " + filePath + " " + FUSE_EXECUTABLE_ARGS;
 
     const comp_res: ProcessResponse = await run_process(command);
 

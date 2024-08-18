@@ -6,9 +6,7 @@ import OutputBox from "./OutputBox";
 export default function OutputArea() {
   const { outputData, llvmIRData, success } = useEditorContext();
 
-  useEffect(() => {
-    console.log(success);
-  }, [outputData, llvmIRData, success]);
+  useEffect(() => {}, [outputData, llvmIRData, success]);
 
   return (
     <div className="flex-grow ">
