@@ -21,7 +21,7 @@ export default function InputArea() {
       <CodeMirror
         value={textData}
         height="100%"
-        className="border rounded-lg border-foreground flex-grow"
+        className="border rounded-lg border-foreground flex-grow text-medium"
         theme={theme === "dark" ? githubDark : eclipse}
         lang="rust"
         basicSetup={{
