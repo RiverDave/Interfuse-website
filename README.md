@@ -1,15 +1,12 @@
-# Fuse Web Compiler
+# InterFuse Web Compiler
 
 ## Project Overview
 
-This project is a website that runs a custom compiler within a Docker environment. It allows users to compile code through a web interface. Refer to the [Compiler Repo](https://github.com/RiverDave/InterfuseLang) for more information
+This project is a website capable of my own Programming language within a Docker environment. It allows users to compile code through a web interface. Refer to the [Compiler Repo](https://github.com/RiverDave/InterfuseLang) for more information
 
 ## Demo
 
-<video width="600" controls>
-  <source src="media/demo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![Demo](media/demo.gif)
 
 ## Prerequisites
 
